@@ -39,6 +39,9 @@ body {
 a {
   text-decoration: none;
 }
+ul {
+  list-style: none;
+}
 /* div {
   display: block;
 } */
