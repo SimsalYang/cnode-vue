@@ -30,7 +30,7 @@
 
 <script>
 export default {
-  name: "ContentHeader",
+  name: "HomeHeader",
   data() {
     return {
       activeIndex: "all"

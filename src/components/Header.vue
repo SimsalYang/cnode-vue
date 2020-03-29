@@ -6,7 +6,11 @@
       </el-col>
       <el-col :span="6">
         <el-form ref="form" :model="form">
-          <el-input class="nav-search" v-model="form.text" prefix-icon="el-icon-search"></el-input>
+          <el-input
+            class="nav-search"
+            v-model="form.text"
+            prefix-icon="el-icon-search"
+          ></el-input>
         </el-form>
       </el-col>
       <el-col :span="12">
