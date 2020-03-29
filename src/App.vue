@@ -5,7 +5,8 @@
       <el-container direction="horizontal" class="main">
         <!-- <Content class="content"></Content> -->
         <el-main style="padding: 0">
-          <Content></Content>
+          <!-- <Content></Content> -->
+          <router-view></router-view>
         </el-main>
         <el-aside>Aside</el-aside>
       </el-container>
@@ -17,14 +18,14 @@
 
 <script>
 import Header from "@/components/Header";
-import Content from "@/components/Content";
+// import Content from "@/components/Content";
 import Footer from "@/components/Footer";
 
 export default {
   name: "app",
   components: {
     Header,
-    Content,
+    // Content,
     Footer
   }
 };
