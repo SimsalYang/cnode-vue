@@ -35,7 +35,9 @@ body {
   margin: 0;
   background-color: #e1e1e1;
 }
-
+a {
+  text-decoration: none;
+}
 /* div {
   display: block;
 } */
