@@ -4,7 +4,9 @@
       <Header></Header>
       <el-container direction="horizontal" class="main">
         <!-- <Content class="content"></Content> -->
-        <el-main>Main</el-main>
+        <el-main style="padding: 0">
+          <Content></Content>
+        </el-main>
         <el-aside>Aside</el-aside>
       </el-container>
       <!-- <el-footer>Footer</el-footer> -->
@@ -15,14 +17,14 @@
 
 <script>
 import Header from "@/components/Header";
-// import Content from '@/components/Content';
+import Content from "@/components/Content";
 import Footer from "@/components/Footer";
 
 export default {
   name: "app",
   components: {
     Header,
-    // Content,
+    Content,
     Footer
   }
 };
@@ -57,14 +59,12 @@ body {
 .el-aside {
   background-color: #fff;
   color: #000;
-  border-radius: 5px;
+  border-radius: 3px;
   /* height: 100%; */
 }
 
-.el-main {
-  background-color: #ffffff;
-  color: #000;
-  margin-right: 20px;
+.el-container >>> .el-main {
+  padding: 0;
 }
 
 .el-footer {
@@ -78,8 +78,15 @@ body {
   flex: 1;
   margin: 20px;
 }
+
 .content {
   border-radius: 5px;
+  margin-right: 20px;
+}
+.el-main {
+  background-color: #ffffff;
+  color: #000;
+  border-radius: 3px;
   margin-right: 20px;
 }
 </style>
