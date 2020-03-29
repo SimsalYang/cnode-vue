@@ -8,22 +8,22 @@
         <el-aside>Aside</el-aside>
       </el-container>
       <!-- <el-footer>Footer</el-footer> -->
-      <FooterMain></FooterMain>
+      <Footer></Footer>
     </el-container>
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header';
+import Header from "@/components/Header";
 // import Content from '@/components/Content';
-import FooterMain from '@/components/FooterMain';
+import Footer from "@/components/Footer";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
     Header,
     // Content,
-    FooterMain
+    Footer
   }
 };
 </script>
@@ -34,16 +34,19 @@ body {
   background-color: #e1e1e1;
 }
 
-div {
+/* div {
   display: block;
-}
+} */
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
   color: #2c3e50;
+  display: flex;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 .el-header {
   background-color: #444;
@@ -65,14 +68,14 @@ div {
 }
 
 .el-footer {
-  position: absolute;
-  width: 100%;
-  bottom: 0;
   background-color: #fff;
   color: #ababab;
+  /* align-items: flex-end; */
+  /* flex: 1; */
 }
 .main {
-  display: block;
+  /* display: block; */
+  flex: 1;
   margin: 20px;
 }
 .content {
