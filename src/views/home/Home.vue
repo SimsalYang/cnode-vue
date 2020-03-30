@@ -14,30 +14,53 @@
             :src="item.author.avatar_url"
           ></el-avatar>
         </router-link>
-        <span class="count-replies" title="回复数">{{ item.reply_count }}</span>
-        <span>/</span>
-        <span class="count-visits" title="点击数">{{ item.visit_count }}</span>
+        <span class="reply-visit">
+          <span class="count-replies" title="回复数">{{
+            item.reply_count
+          }}</span>
+          <span>/</span>
+          <span class="count-visits" title="点击数">{{
+            item.visit_count
+          }}</span>
+        </span>
         <span v-if="item.top" class="put-top">置顶</span>
+        <span v-else-if="item.good" class="topic-good">精华</span>
         <span v-else class="topic-tab">{{ showTab(item.tab) }}</span>
         <router-link
           class="topic-title"
           :to="{ name: 'topic', params: { id: item.id } }"
-        >{{ item.title }}</router-link>
-        <span class="last-reply-time">{{ item.last_reply_at }}</span>
+          >{{ item.title }}</router-link
+        >
+        <span class="last-reply-time">{{
+          relativeTime(item.last_reply_at)
+        }}</span>
       </div>
+    </div>
+    <div v-if="data.length !== 0" class="pagination">
+      <el-pagination
+        background
+        layout="prev, pager, next"
+        :hide-on-single-page="true"
+        :page-count="20"
+        :pager-count="5"
+        prev-text="<<"
+        next-text=">>"
+        @current-change="pageChange"
+      ></el-pagination>
     </div>
   </div>
 </template>
 <script>
 // TODO:
-// 1. 头像、标题的 router-link 添加跳转
-// 2. 数据显示区加 margin
-// 3.数据显示区布局加样式
-// 4. 添加 moment 修改时间样式
+// 1. 头像、标题的 router-link 添加跳转✔
+// 2. 数据显示区加 margin✔
+// 3.数据显示区布局加样式✔
+// 4. 添加 moment 修改时间样式✔
 
 // @ is an alias to /src
 import HomeHeader from "@/views/home/HomeHeader";
 import axios from "axios";
+import moment from "moment";
 
 export default {
   name: "Home",
@@ -47,8 +70,8 @@ export default {
   data() {
     return {
       data: [],
-      params: {
-        page: 10,
+      query: {
+        page: 1,
         tab: "all",
         limit: 40,
         mdrender: "true"
@@ -56,6 +79,17 @@ export default {
     };
   },
   methods: {
+    getData() {
+      axios
+        .get(
+          `https://cnodejs.org/api/v1/topics?page=${this.query.page}&tab=${this.query.tab}&limit=${this.query.limit}&mdrender=${this.query.mdrender}`
+        )
+        .then(res => res.data)
+        .then(data => {
+          this.data = [...data.data];
+          // console.log(this.data);
+        });
+    },
     showTab(tab) {
       switch (tab) {
         case "good":
@@ -69,31 +103,26 @@ export default {
         case "dev":
           return "开发";
       }
+    },
+    relativeTime(time) {
+      return moment(time).fromNow();
+    },
+    pageChange(currentPage) {
+      this.query.page = currentPage;
+      this.$router.replace({
+        query: { ...this.$route.query, page: this.query.page }
+      });
+      // this.getData();
     }
   },
   mounted() {
-    axios
-      .get(
-        `https://cnodejs.org/api/v1/topics?page=${this.params.page}&tab=${this.params.tab}&limit=${this.params.limit}&mdrender=${this.params.mdrender}`
-      )
-      .then(res => res.data)
-      .then(data => {
-        this.data = [...data.data];
-        console.log(this.data);
-      });
+    this.getData();
   },
   watch: {
     $route(to) {
-      this.params.tab = to.query.tab;
-      axios
-        .get(
-          `https://cnodejs.org/api/v1/topics?page=${this.params.page}&tab=${this.params.tab}&limit=${this.params.limit}&mdrender=${this.params.mdrender}`
-        )
-        .then(res => res.data)
-        .then(data => {
-          this.data = [...data.data];
-          console.log(this.data);
-        });
+      // console.log(to);
+      this.query.tab = to.query.tab;
+      this.getData();
     }
   }
 };
@@ -115,6 +144,12 @@ export default {
 .avatar {
   margin: 0 10px;
 }
+.reply-visit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+}
 .count-replies {
   font-size: 14px;
   line-height: 28px;
@@ -126,15 +161,17 @@ export default {
   color: #b4b4b4;
 }
 .put-top,
+.topic-good,
 .topic-tab {
-  margin: 0 10px;
+  margin-right: 10px;
   padding: 2px 4px;
   border-radius: 3px;
   font-size: 12px;
   line-height: 20px;
 }
 
-.put-top {
+.put-top,
+.topic-good {
   background-color: #80bd01;
   color: #fff;
 }
@@ -146,6 +183,9 @@ export default {
   font-size: 16px;
   line-height: 30px;
 }
+.last-reply-time {
+  margin-left: auto;
+}
 a {
   color: #333;
   text-decoration-color: #333;
@@ -153,5 +193,9 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+.pagination {
+  margin: 10px 0 0 10px;
+  height: 40px;
 }
 </style>
