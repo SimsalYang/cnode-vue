@@ -40,7 +40,7 @@ select,
 textarea {
   /* for ie */
   /*font: 12px/1 Tahoma, Helvetica, Arial, "宋体", sans-serif;*/
-  font: 12px/1 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
+  font: 14px/1 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
   /* 用 ascii 字符表示，使得在任何编码下都无问题 */
 }
 
@@ -82,7 +82,7 @@ tt {
 
 /* 统一等宽字体 */
 small {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 /* 小于 12px 的中文很难阅读，让 small 正常化 */

@@ -12,6 +12,7 @@
             style="width: 30px; height: 30px"
             fit="fill"
             :src="item.author.avatar_url"
+            :alt="item.author.loginname"
           ></el-avatar>
         </router-link>
         <span class="reply-visit">
@@ -32,7 +33,7 @@
           >{{ item.title }}</router-link
         >
         <span class="last-reply-time">{{
-          relativeTime(item.last_reply_at)
+          GLOBAL.relativeTime(item.last_reply_at)
         }}</span>
       </div>
     </div>
@@ -60,7 +61,6 @@
 // @ is an alias to /src
 import HomeHeader from "@/views/home/HomeHeader";
 import axios from "axios";
-import moment from "moment";
 
 export default {
   name: "Home",
@@ -103,9 +103,6 @@ export default {
         case "dev":
           return "开发";
       }
-    },
-    relativeTime(time) {
-      return moment(time).fromNow();
     },
     pageChange(currentPage) {
       this.query.page = currentPage;
