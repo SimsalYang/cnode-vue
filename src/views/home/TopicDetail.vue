@@ -1,12 +1,12 @@
-.<template>
-  <div id="user-detail">
-    用户详情
+<template>
+  <div id="topic-detail">
+    主题详情
   </div>
 </template>
 
 <script>
 export default {
-  name: "User"
+  name: "TopicDetail"
 };
 </script>
 
