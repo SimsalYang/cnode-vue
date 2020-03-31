@@ -33,7 +33,7 @@ export default {
   name: "HomeHeader",
   data() {
     return {
-      activeIndex: "all"
+      activeIndex: this.$route.query.tab || "all"
     };
   }
 };

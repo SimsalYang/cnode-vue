@@ -1,9 +1,9 @@
-import moment from 'moment';
+import moment from "moment";
 
 // const baseUrl = ''
 
-const relativeTime = (time) => {
+const relativeTime = time => {
   return moment(time).fromNow();
-}
+};
 
 export default { relativeTime };

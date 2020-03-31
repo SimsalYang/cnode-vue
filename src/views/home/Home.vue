@@ -1,42 +1,7 @@
 <template>
   <div class="home">
     <HomeHeader></HomeHeader>
-    <div class="topic-list">
-      <div class="cell" v-for="item in data" :key="item.id">
-        <router-link
-          class="avatar"
-          :to="{ name: 'user', params: { loginname: item.author.loginname } }"
-        >
-          <el-avatar
-            shape="square"
-            style="width: 30px; height: 30px"
-            fit="fill"
-            :src="item.author.avatar_url"
-            :alt="item.author.loginname"
-          ></el-avatar>
-        </router-link>
-        <span class="reply-visit">
-          <span class="count-replies" title="回复数">{{
-            item.reply_count
-          }}</span>
-          <span>/</span>
-          <span class="count-visits" title="点击数">{{
-            item.visit_count
-          }}</span>
-        </span>
-        <span v-if="item.top" class="put-top">置顶</span>
-        <span v-else-if="item.good" class="topic-good">精华</span>
-        <span v-else class="topic-tab">{{ showTab(item.tab) }}</span>
-        <router-link
-          class="topic-title"
-          :to="{ name: 'topic', params: { id: item.id } }"
-          >{{ item.title }}</router-link
-        >
-        <span class="last-reply-time">{{
-          GLOBAL.relativeTime(item.last_reply_at)
-        }}</span>
-      </div>
-    </div>
+    <TopicList :data="data"></TopicList>
     <div v-if="data.length !== 0" class="pagination">
       <el-pagination
         background
@@ -46,6 +11,7 @@
         :pager-count="5"
         prev-text="<<"
         next-text=">>"
+        :current-page="query.page"
         @current-change="pageChange"
       ></el-pagination>
     </div>
@@ -60,20 +26,22 @@
 
 // @ is an alias to /src
 import HomeHeader from "@/views/home/HomeHeader";
+import TopicList from "@/components/TopicList";
 import axios from "axios";
 
 export default {
   name: "Home",
   components: {
-    HomeHeader
+    HomeHeader,
+    TopicList
   },
   data() {
     return {
       data: [],
       query: {
-        page: 1,
-        tab: "all",
-        limit: 40,
+        page: parseInt(this.$route.query.page) || 1,
+        tab: this.$route.query.tab || "all",
+        limit: 10,
         mdrender: "true"
       }
     };
@@ -106,20 +74,24 @@ export default {
     },
     pageChange(currentPage) {
       this.query.page = currentPage;
+      this.$route.query.tab = this.query.tab;
       this.$router.replace({
         query: { ...this.$route.query, page: this.query.page }
       });
-      // this.getData();
+      this.getData();
     }
   },
   mounted() {
     this.getData();
   },
   watch: {
-    $route(to) {
-      // console.log(to);
-      this.query.tab = to.query.tab;
-      this.getData();
+    $route(to, from) {
+      // console.log(to, from);
+      if (to.query.tab !== from.query.tab) {
+        this.query.tab = to.query.tab;
+        this.query.page = 1;
+        this.getData();
+      }
     }
   }
 };
