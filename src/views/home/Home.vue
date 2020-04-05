@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div id="home">
     <HomeHeader></HomeHeader>
     <TopicList :data="data"></TopicList>
     <div v-if="data.length !== 0" class="pagination">
@@ -97,72 +97,10 @@ export default {
 };
 </script>
 <style scoped>
-.topic-list {
-  margin: 0;
-}
-.cell {
-  padding: 10px;
-  /* align-self: center; */
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-.cell:hover {
-  background-color: #f5f5f5;
-}
-.avatar {
-  margin: 0 10px;
-}
-.reply-visit {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-}
-.count-replies {
-  font-size: 14px;
-  line-height: 28px;
-  color: #9e78c0;
-}
-.count-visits {
-  font-size: 10px;
-  line-height: 28px;
-  color: #b4b4b4;
-}
-.put-top,
-.topic-good,
-.topic-tab {
-  margin-right: 10px;
-  padding: 2px 4px;
-  border-radius: 3px;
-  font-size: 12px;
-  line-height: 20px;
+#home {
+  background-color: #ffffff;
 }
 
-.put-top,
-.topic-good {
-  background-color: #80bd01;
-  color: #fff;
-}
-.topic-tab {
-  background-color: #e5e5e5;
-  color: #999999;
-}
-.topic-title {
-  font-size: 16px;
-  line-height: 30px;
-}
-.last-reply-time {
-  margin-left: auto;
-}
-a {
-  color: #333;
-  text-decoration-color: #333;
-}
-
-a:hover {
-  text-decoration: underline;
-}
 .pagination {
   margin: 10px 0 0 10px;
   height: 40px;

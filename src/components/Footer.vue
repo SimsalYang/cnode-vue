@@ -48,8 +48,9 @@
           <el-link
             :underline="false"
             href="https://www.digitalocean.com/?refcode=eba02656eeb3"
-          ></el-link
-          >DigitalOcean(https://www.digitalocean.com/)
+          >
+            DigitalOcean(https://www.digitalocean.com/)
+          </el-link>
         </p>
       </div>
     </div>
@@ -82,6 +83,7 @@ export default {
   max-width: 1400px;
   min-width: 960px;
   margin: 0 auto;
+  padding: 10px;
   color: #e2e2e2;
   padding: 20px 0;
   font-size: 13px;

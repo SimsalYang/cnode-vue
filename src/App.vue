@@ -90,7 +90,7 @@ ul {
   margin-right: 20px;
 }
 .el-main {
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   color: #000;
   border-radius: 3px;
   margin-right: 20px;

@@ -35,9 +35,6 @@
             <router-link to="/about">关于</router-link>
           </el-menu-item>
           <el-menu-item index="5">
-            <router-link to="/signup">注册</router-link>
-          </el-menu-item>
-          <el-menu-item index="6">
             <router-link to="/signin">登录</router-link>
           </el-menu-item>
         </el-menu>

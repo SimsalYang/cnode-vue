@@ -127,8 +127,4 @@ a {
 a:hover {
   text-decoration: underline;
 }
-.pagination {
-  margin: 10px 0 0 10px;
-  height: 40px;
-}
 </style>

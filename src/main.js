@@ -1,8 +1,8 @@
 import Vue from "vue";
+import "./assets/css/reset.css";
 import App from "./App.vue";
 import router from "./router";
 import "./plugins/element.js";
-import "./assets/css/reset.css";
 import global from "./plugins/common";
 
 Vue.config.productionTip = false;
