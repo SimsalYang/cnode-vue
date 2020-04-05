@@ -26,7 +26,13 @@
             <el-button type="primary">登录</el-button>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" plain>通过 GitHub 登录</el-button>
+            <el-button>
+              <el-link
+                :underlin="false"
+                href="https://github.com/login/oauth/authorize?client_id=1a9b42d02ec3c39d3eb8&redirect_uri=http://localhost:8080/oauth/redirect"
+                >通过 GitHub 登录</el-link
+              >
+            </el-button>
           </el-form-item>
           <el-form-item>
             <el-link :underline="false">忘记密码了？</el-link>
@@ -45,8 +51,12 @@ export default {
       form: {
         username: "",
         password: ""
-      }
+      },
+      oauthCode: ""
     };
+  },
+  methods: {
+    getOAuth() {}
   }
 };
 </script>
