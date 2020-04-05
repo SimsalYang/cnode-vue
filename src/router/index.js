@@ -6,6 +6,7 @@ Vue.use(VueRouter);
 
 const Topic = () => import("@/views/home/TopicDetail.vue");
 const User = () => import("@/views/user/User.vue");
+const Login = () => import("@/views/login/Login.vue");
 
 const routes = [
   {
@@ -31,6 +32,11 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: 'about' */ "../views/About.vue")
+  },
+  {
+    path: "/signin",
+    name: "login",
+    component: Login
   }
 ];
 
