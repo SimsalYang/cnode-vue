@@ -31,11 +31,14 @@ body {
   margin: 0;
   background-color: #e1e1e1;
 }
-a {
-  text-decoration: none;
-}
 ul {
   list-style: none;
+}
+img {
+  max-width: 100%;
+}
+a {
+  color: #08c;
 }
 /* div {
   display: block;

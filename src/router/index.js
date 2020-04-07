@@ -7,6 +7,7 @@ Vue.use(VueRouter);
 const Topic = () => import("@/views/home/TopicDetail.vue");
 const User = () => import("@/views/user/User.vue");
 const Login = () => import("@/views/login/Login.vue");
+const GetStart = () => import("@/views/getstart/GetStart.vue");
 
 const routes = [
   {
@@ -23,6 +24,11 @@ const routes = [
     path: "/user/:loginname",
     name: "user",
     component: User
+  },
+  {
+    path: "/getstart",
+    name: "getstart",
+    component: GetStart
   },
   {
     path: "/about",
