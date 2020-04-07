@@ -40,10 +40,10 @@ const aboutData = [
   {
     title: "LOGO",
     content: `<p>
-              白底： <a href="/public/images/cnodejs.svg">/public/images/cnodejs.svg</a>
+              白底： <a href="/images/cnodejs.svg">/images/cnodejs.svg</a>
             </p>
             <p>
-              黑底： <a href="/public/images/cnodejs_light.svg">/public/images/cnodejs_light.svg</a>
+              黑底： <a href="/images/cnodejs_light.svg">/images/cnodejs_light.svg</a>
             </p>`
   }
 ];

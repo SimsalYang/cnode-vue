@@ -114,9 +114,9 @@ export default {
           this.data = data.data;
           this.loginname = data.data.author.loginname;
           this.replies = data.data.replies;
-          console.log(this.data);
+          // console.log(this.data);
         })
-        .catch(err => console.log(err));
+        .catch(err => alert(err));
     },
     showTab(tab) {
       switch (tab) {

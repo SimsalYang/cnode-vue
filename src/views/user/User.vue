@@ -79,7 +79,7 @@ export default {
         .then(res => res.data)
         .then(data => {
           this.data = data.data;
-          console.log(this.data);
+          // console.log(this.data);
         });
     }
   }

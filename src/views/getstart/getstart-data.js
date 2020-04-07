@@ -40,7 +40,8 @@ const getstart = [
         link: "https://github.com/youyudehexie/node123"
       },
       {
-        label: "《<strong>A curated list of delightful Node.js packages and resources</strong>》",
+        label:
+          "《<strong>A curated list of delightful Node.js packages and resources</strong>》",
         link: "https://github.com/sindresorhus/awesome-nodejs"
       },
       {
