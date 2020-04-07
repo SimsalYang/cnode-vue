@@ -4,16 +4,23 @@
       <el-col :span="6">
         <el-image class="nav-logo" :src="url" style="height: 40px"></el-image>
       </el-col>
-      <el-col :span="6">
-        <el-form ref="form" :model="form">
+      <!-- <el-col :span="6">
+        <el-form
+          ref="form"
+          :model="form"
+          method="get"
+          action="http://www.google.com/search"
+          target="_blank"
+        >
           <el-input
             class="nav-search"
             v-model="form.text"
             prefix-icon="el-icon-search"
+            name="q"
           ></el-input>
         </el-form>
-      </el-col>
-      <el-col :span="12">
+      </el-col> -->
+      <el-col :span="18">
         <el-menu
           :default-active="activeIndex"
           mode="horizontal"
@@ -22,16 +29,16 @@
           text-color="#ccc"
           active-text-color="#fff"
         >
-          <el-menu-item index="1">
+          <el-menu-item index="index">
             <router-link to="/">首页</router-link>
           </el-menu-item>
-          <el-menu-item index="2">
+          <el-menu-item index="getstart">
             <router-link to="/getstart">新手入门</router-link>
           </el-menu-item>
           <!-- <el-menu-item index="3">
             <router-link to="/api">API</router-link>
           </el-menu-item> -->
-          <el-menu-item index="4">
+          <el-menu-item index="about">
             <router-link to="/about">关于</router-link>
           </el-menu-item>
           <!-- <el-menu-item index="5">
@@ -59,22 +66,22 @@ export default {
   },
   data() {
     return {
-      activeIndex: "1",
+      activeIndex: "index",
       url: require("../assets/logo.svg"),
-      form: {
-        text: ""
-      },
+      // form: {
+      //   text: ""
+      // },
       user: null
     };
-  },
-  methods: {
-    login(user) {
-      this.user = user;
-    },
-    logout() {
-      this.user = null;
-    }
   }
+  // methods: {
+  //   login(user) {
+  //     this.user = user;
+  //   },
+  //   logout() {
+  //     this.user = null;
+  //   }
+  // }
 };
 </script>
 
