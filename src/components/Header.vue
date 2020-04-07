@@ -28,18 +28,21 @@
           <el-menu-item index="2">
             <router-link to="/getstart">新手入门</router-link>
           </el-menu-item>
-          <el-menu-item index="3">
+          <!-- <el-menu-item index="3">
             <router-link to="/api">API</router-link>
-          </el-menu-item>
+          </el-menu-item> -->
           <el-menu-item index="4">
             <router-link to="/about">关于</router-link>
           </el-menu-item>
-          <el-menu-item index="5">
+          <!-- <el-menu-item index="5">
             <router-link to="/signup">注册</router-link>
           </el-menu-item>
           <el-menu-item index="6">
             <router-link to="/signin">登录</router-link>
-          </el-menu-item>
+          </el-menu-item> -->
+          <!-- <el-menu-item index="7">
+            <auth @loginEvent="login" @logoutEvent="logout"></auth>
+          </el-menu-item> -->
         </el-menu>
       </el-col>
     </el-row>
@@ -47,16 +50,30 @@
 </template>
 
 <script>
+// import GithubAuth from "@/components/GithubAuth";
+
 export default {
   name: "Header",
+  components: {
+    // auth: GithubAuth
+  },
   data() {
     return {
       activeIndex: "1",
       url: require("../assets/logo.svg"),
       form: {
         text: ""
-      }
+      },
+      user: null
     };
+  },
+  methods: {
+    login(user) {
+      this.user = user;
+    },
+    logout() {
+      this.user = null;
+    }
   }
 };
 </script>
